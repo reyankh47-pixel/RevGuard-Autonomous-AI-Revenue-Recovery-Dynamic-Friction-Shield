@@ -31,7 +31,6 @@ Every year, digital merchants lose up to **30% of potential revenue** to two maj
 ---
 
 ## 💡 The Solution: RevGuard
-## 💡 How RevGuard Works
 
 **RevGuard bridges the gap between zero-friction conversion and autonomous revenue recovery** through a three-phase intelligent payment lifecycle.
 
