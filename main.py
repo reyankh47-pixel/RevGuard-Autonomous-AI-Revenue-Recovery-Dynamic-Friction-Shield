@@ -41,6 +41,7 @@ def startup_event():
 # ==========================================
 
 @app.get("/", response_class=HTMLResponse)
+@app.get("/main.py", response_class=HTMLResponse)
 async def view_store(request: Request):
     conn = get_db()
     cursor = conn.cursor()
