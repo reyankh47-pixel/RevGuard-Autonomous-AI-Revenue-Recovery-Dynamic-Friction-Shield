@@ -1,56 +1,35 @@
-﻿# RevGuard | AI Revenue Recovery & Dynamic Friction Agent
+🛡️ RevGuard: Autonomous AI Revenue Recovery & Risk Shield
 
-> Built for the **Razorpay Buildathon: AI Revenue Recovery**
+[![Live Demo](https://img.shields.io/badge/Vercel-Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://rev-guard-autonomous-ai-revenue-rec.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/reyankh47-pixel/RevGuard-Autonomous-AI-Revenue-Recovery-Dynamic-Friction-Shield)
+[![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Razorpay Buildathon](https://img.shields.io/badge/Razorpay-Buildathon_2026-0C2340?style=for-the-badge&logo=razorpay&logoColor=white)](https://razorpay.com/)
 
-## 🌟 Overview
-**RevGuard** is an intelligent revenue protection and recovery platform that stops fraud without harming legitimate checkout conversions. By unifying **Phase 1 e-KYC Baseline Enrollment**, **Phase 2 Context-Aware Dynamic Friction**, and **Phase 3 Autonomous AI Revenue Recovery**, RevGuard saves merchants from lost cart revenue and payment failure drops.
-
----
-
-## 🚀 Key Features
-
-### 1. Phase 1: One-Time Secure Onboarding (e-KYC)
-- Captures GPS telemetry, IP network signatures, and canvas device fingerprints.
-- Vision AI agent simulates document OCR extraction & biometric liveness hashing.
-- Enrolls verified user profile with a baseline risk score (0-100).
-
-### 2. Phase 2: Context-Aware Dynamic Step-Up Friction
-- Real-time telemetry comparison against user registration baseline.
-- **Explainable AI Engine**: Generates auditable rationale bullets for every decision.
-- **Dynamic Decision Routing**:
-  - **Score < 40 (Safe)**: 1-Click Zero Friction Checkout.
-  - **Score 40 - 79 (Suspicious)**: Dynamic Step-Up Challenge (OTP / Biometric Selfie).
-  - **Score >= 80 (High Risk/Fraud)**: Instant Transaction Freeze & Shield.
-
-### 3. Phase 3: Autonomous AI Revenue Recovery Workflows
-- Triggers instantly on bank gateway timeouts (504), network drops, or hesitation drop-offs.
-- AI Agent diagnoses root cause and calculates recovery probability.
-- Executes omni-channel recovery:
-  - Generates secure **1-Click Razorpay UPI Fallback Payment Links**.
-  - Dynamic AI recovery incentives (e.g. 5% limited-time discount).
-  - Dispatches personalized **WhatsApp / SMS / Email** recovery messages.
-  - Integrated **AI Recovery Copilot Chat Assistant** for real-time customer support.
-
-### 4. Merchant Command Center & Edge-Case Test Lab
-- Live At-Risk vs. Recovered Revenue metrics & ROI counter.
-- Real-time Explainable AI event stream.
-- 1-Click presentation sandbox to demonstrate all scenarios live.
+> **Built for the Razorpay Buildathon: AI Revenue Recovery**  
+> *An intelligent autonomous agent that eliminates checkout drop-offs, recovers failed payments in real-time, and shields merchants with dynamic context-aware security.*
 
 ---
 
-## 🛠️ How to Run
+## 🌐 Live Application Links
 
-### Quick Start (Windows / PowerShell):
-```powershell
-cd razorpay-revguard
-pip install -r requirements.txt
-python main.py
-```
+| Destination | Live URL | Purpose |
+| :--- | :--- | :--- |
+| 🛒 **Live Demo Store** | [https://rev-guard-autonomous-ai-revenue-rec.vercel.app/](https://rev-guard-autonomous-ai-revenue-rec.vercel.app/) | Interactive storefront with real-time risk assessment and dynamic checkout. |
+| 🆔 **e-KYC Baseline Enrollment** | [https://rev-guard-autonomous-ai-revenue-rec.vercel.app/onboarding](https://rev-guard-autonomous-ai-revenue-rec.vercel.app/onboarding) | Phase 1 user identity registration with live GPS and device fingerprinting. |
+| 📊 **Merchant Command Center** | [https://rev-guard-autonomous-ai-revenue-rec.vercel.app/dashboard](https://rev-guard-autonomous-ai-revenue-rec.vercel.app/dashboard) | Live recovered revenue analytics, recovery rates, and Explainable AI stream. |
+| 🧪 **Presentation Test Lab** | [https://rev-guard-autonomous-ai-revenue-rec.vercel.app/simulator](https://rev-guard-autonomous-ai-revenue-rec.vercel.app/simulator) | 1-Click sandbox to demonstrate all edge cases live to hackathon judges. |
 
-Open your browser at: `http://localhost:8000`
+---
 
-### Pages:
-- **Demo Store**: `http://localhost:8000/`
-- **e-KYC Baseline Onboarding**: `http://localhost:8000/onboarding`
-- **Merchant Command Center**: `http://localhost:8000/dashboard`
-- **Hackathon Test Lab**: `http://localhost:8000/simulator`
+🎯 The Problem
+
+Every year, digital merchants lose up to **30% of potential revenue** to two major flaws in payment flows:
+1. **Dead-End Payment Failures**: Card network 504 timeouts, bank server downtime, or card limits display a dead-end *"Payment Failed"* screen. The customer leaves, and that sale is permanently lost.
+2. **Checkout Friction & False Positives**: Static fraud detection forces legitimate shoppers through tedious OTP delays, driving cart abandonment. Blanket fraud rules reject good transactions.
+
+---
+
+## 💡 The Solution: RevGuard
+
+**RevGuard** bridges the gap between **zero-friction conversion** and **automated revenue recovery**:
