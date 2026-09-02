@@ -167,15 +167,4 @@ Open http://localhost:8000 in your browser.
 📜 License & Acknowledgements
 Built with ❤️ for the Razorpay Buildathon: AI Revenue Recovery.
 
-
-
-</details>
-4. Click **"Commit changes"**.
----
-#### 2. Update `PROJECT_GUIDE.md` on GitHub
-1. Click on **`PROJECT_GUIDE.md`** on GitHub ➔ Click the **Pencil icon ✏️**.
-2. Replace with the updated guide content from [`PROJECT_GUIDE.md`](file:///C:/Users/user/.gemini/antigravity/scratch/razorpay-revguard/PROJECT_GUIDE.md).
-3. Click **"Commit changes"**.
-
-
 **RevGuard** bridges the gap between **zero-friction conversion** and **automated revenue recovery**:
