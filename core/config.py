@@ -2,7 +2,12 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / 'revguard.db'
+
+# Support Vercel serverless writable /tmp directory
+if os.environ.get('VERCEL') or os.environ.get('AWS_LAMBDA_FUNCTION_NAME'):
+    DB_PATH = Path('/tmp') / 'revguard.db'
+else:
+    DB_PATH = BASE_DIR / 'revguard.db'
 
 APP_NAME = 'RevGuard | AI Revenue Recovery & Risk Shield'
 APP_VERSION = '2.0.0'
