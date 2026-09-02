@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef8ff',
+              100: '#d9effe',
+              500: '#0c8ce9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+  
+  <!-- Browser Telemetry Engine -->
+  <script src="/static/js/telemetry.js"></script>
+  
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-full flex flex-col bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Branding -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-brand-500/20 ring-1 ring-white/20">
+            <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-lg tracking-tight text-white">RevGuard</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-brand-500/20 text-brand-400 border border-brand-500/30 rounded-full">Buildathon AI</span>
+            </div>
+            <p class="text-xs text-slate-400">AI Revenue Recovery & Dynamic Friction</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1 font-medium text-sm">
+          <a href="/" class="px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center space-x-2">
+            <i class="fa-solid fa-bag-shopping text-brand-400"></i>
+            <span>Demo Store</span>
+          </a>
+          <a href="/onboarding" class="px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center space-x-2">
+            <i class="fa-solid fa-id-card-clip text-emerald-400"></i>
+            <span>e-KYC Baseline</span>
+          </a>
+          <a href="/dashboard" class="px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center space-x-2">
+            <i class="fa-solid fa-chart-line text-indigo-400"></i>
+            <span>Merchant Hub</span>
+          </a>
+          <a href="/simulator" class="px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors flex items-center space-x-2">
+            <i class="fa-solid fa-flask-vial text-amber-400"></i>
+            <span>Test Lab</span>
+          </a>
+        </nav>
+
+        <!-- Live Telemetry Status Pill -->
+        <div class="hidden lg:flex items-center space-x-3">
+          <div class="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-mono text-slate-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Live Telemetry Engine: ACTIVE</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/60 bg-slate-900/40 mt-auto py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-bolt text-brand-400"></i>
+        <span>RevGuard AI Agent &bull; Powered by Autonomous Context Signals & Razorpay Integration</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span>Phase 1: e-KYC Baseline</span>
+        <span>&bull;</span>
+        <span>Phase 2: Dynamic Friction</span>
+        <span>&bull;</span>
+        <span>Phase 3: Revenue Recovery</span>
+      </div>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

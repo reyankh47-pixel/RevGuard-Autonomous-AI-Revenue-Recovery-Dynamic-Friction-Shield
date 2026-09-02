@@ -1,0 +1,212 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Apex Gear Store | Powered by RevGuard AI{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+  
+  <!-- Hero / Header Banner -->
+  <div class="rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950/80 border border-slate-800 p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+    <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl relative z-10">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-xs font-semibold uppercase tracking-wider mb-4 border border-brand-500/30">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Live Interactive Storefront</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3">
+        Apex Gear & Tech Store
+      </h1>
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+        Experience seamless checkout protected by <strong class="text-white">RevGuard AI</strong>. Legitimate customers enjoy zero-friction 1-click purchases, suspicious signals trigger dynamic step-up verification, and payment drops automatically trigger our autonomous AI Recovery workflows.
+      </p>
+    </div>
+
+    <!-- Active Persona / Identity Selector Bar -->
+    <div class="mt-6 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Customer Identity:</span>
+        <select id="userSelector" class="bg-slate-800 text-white text-xs rounded-lg px-3 py-2 border border-slate-700 focus:outline-none focus:border-brand-500 font-mono">
+          {% for u in users %}
+          <option value="{{ u.user_id }}" data-name="{{ u.name }}" data-city="{{ u.gps_city }}" data-device="{{ u.device_hash }}">
+            {{ u.name }} ({{ u.user_id }} - {{ u.gps_city }})
+          </option>
+          {% endfor %}
+          <option value="GUEST" data-name="Guest Shopper" data-city="Unknown" data-device="unregistered">
+            Guest Shopper (Unverified Baseline)
+          </option>
+        </select>
+      </div>
+
+      <!-- Telemetry Simulation Switch -->
+      <div class="flex items-center space-x-4 text-xs">
+        <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+          <input type="checkbox" id="simulateGeoDrift" class="rounded bg-slate-800 border-slate-700 text-brand-500 focus:ring-0">
+          <span>Simulate Geo-Drift (+1,200km)</span>
+        </label>
+        <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+          <input type="checkbox" id="simulateVpn" class="rounded bg-slate-800 border-slate-700 text-brand-500 focus:ring-0">
+          <span>Simulate VPN/Proxy</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Catalog Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for product in products %}
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-200 flex flex-col group hover:shadow-xl hover:shadow-brand-500/5">
+      <div class="h-52 overflow-hidden relative bg-slate-950">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 px-2.5 py-1 rounded-md text-[11px] font-semibold text-slate-300">
+          {{ product.category }}
+        </div>
+      </div>
+      
+      <div class="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-white mb-1 group-hover:text-brand-400 transition-colors">
+            {{ product.name }}
+          </h3>
+          <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+            {{ product.description }}
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-slate-500 block">Price</span>
+            <span class="text-xl font-extrabold text-white">₹{{ "{:,.2f}".format(product.price) }}</span>
+          </div>
+          <button onclick="initiateCheckout({{ product.id }}, '{{ product.name }}', {{ product.price }})" class="px-4 py-2.5 bg-brand-500 hover:bg-brand-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-brand-500/25 transition-all flex items-center space-x-2">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Instant Checkout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- CHECKOUT & DYNAMIC FRICTION MODAL -->
+<div id="checkoutModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+  <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+    
+    <!-- Modal Header -->
+    <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+          <i class="fa-solid fa-lock text-sm"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-base">Razorpay Secure Checkout</h3>
+          <p class="text-xs text-slate-400" id="modalSub">Protected by RevGuard Risk Engine</p>
+        </div>
+      </div>
+      <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-white p-1">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body / Stages -->
+    <div class="p-6 space-y-5" id="modalStageContent">
+      
+      <!-- Stage 1: Order Summary & Payment Mode -->
+      <div id="stageSummary" class="space-y-4">
+        <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-slate-400 block" id="checkoutItemName">Apex Pro Smartwatch Ultra</span>
+            <span class="text-lg font-bold text-white" id="checkoutItemPrice">₹4,999.00</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">e-KYC Baseline Active</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-semibold text-slate-300">Payment Option</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="border border-slate-700 bg-slate-800/60 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:border-brand-500">
+              <input type="radio" name="paymentOption" value="UPI" checked class="text-brand-500">
+              <div>
+                <span class="text-xs font-bold text-white block">UPI Instant</span>
+                <span class="text-[10px] text-slate-400">GPay, PhonePe, Paytm</span>
+              </div>
+            </label>
+            <label class="border border-slate-700 bg-slate-800/60 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:border-brand-500">
+              <input type="radio" name="paymentOption" value="Card" class="text-brand-500">
+              <div>
+                <span class="text-xs font-bold text-white block">Credit/Debit Card</span>
+                <span class="text-[10px] text-slate-400">Visa, Mastercard, RuPay</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Risk Pre-Flight Simulation options -->
+        <div class="pt-2 flex flex-col space-y-2">
+          <button onclick="executeRiskEvaluation(false)" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-brand-500/30 transition-all flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>Authenticate & Pay Now</span>
+          </button>
+
+          <button onclick="simulateFailure('BANK_DOWNTIME', 'Card Network Gateway Timeout 504')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-xl text-xs font-semibold transition-all flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Simulate Bank Failure (Test AI Recovery Agent)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Stage 2: AI Risk Evaluation Result / Dynamic Step-Up Friction -->
+      <div id="stageEvaluation" class="hidden space-y-4">
+        <div id="evalStatusBadge" class="p-4 rounded-xl border text-center space-y-2">
+          <!-- Dynamic Risk Score & Explainability -->
+        </div>
+
+        <!-- Step-Up Challenge Box (When Risk is 40-79) -->
+        <div id="stepUpChallengeBox" class="hidden bg-slate-950/70 border border-amber-500/40 rounded-xl p-4 space-y-3">
+          <div class="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-fingerprint"></i>
+            <span>Dynamic Friction: Step-Up Challenge</span>
+          </div>
+          <p class="text-xs text-slate-300">
+            Due to minor location or device anomaly, please verify ownership with one-time security code (Demo code: <strong class="text-white">4321</strong>) or biometric selfie check.
+          </p>
+          <div class="flex space-x-2">
+            <input type="text" id="stepUpOtpInput" placeholder="Enter OTP (4321)" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white font-mono focus:border-brand-500 focus:outline-none text-center tracking-widest">
+            <button onclick="submitStepUpVerification('OTP')" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-xs font-bold">
+              Verify
+            </button>
+          </div>
+          <div class="pt-2 flex items-center justify-between text-xs">
+            <button onclick="submitStepUpVerification('SELFIE')" class="text-brand-400 hover:underline">
+              <i class="fa-solid fa-camera"></i> Quick Biometric Selfie
+            </button>
+            <button onclick="abandonStepUpFriction()" class="text-rose-400 hover:underline">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Abandon / Hesitate
+            </button>
+          </div>
+        </div>
+
+        <!-- Explainable AI Bullets -->
+        <div class="space-y-1.5" id="aiReasonsList">
+          <!-- Loaded via JS -->
+        </div>
+
+        <div id="evalActions" class="pt-2">
+          <button onclick="closeCheckoutModal()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/store.js"></script>
+{% endblock %}

@@ -1,0 +1,139 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Buildathon Presentation Test Lab | RevGuard AI{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+  
+  <!-- Header -->
+  <div class="rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 p-6 sm:p-8 space-y-3">
+    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider border border-amber-500/30">
+      <i class="fa-solid fa-flask-vial"></i>
+      <span>Hackathon Presentation Sandbox</span>
+    </div>
+    <h1 class="text-3xl font-extrabold text-white">Interactive Edge-Case Simulator</h1>
+    <p class="text-slate-300 text-sm max-w-3xl leading-relaxed">
+      Execute real-world transaction scenarios in 1-click to demonstrate <strong class="text-white">e-KYC Baseline Matching</strong>, <strong class="text-white">Dynamic Step-Up Friction</strong>, <strong class="text-white">Autonomous Revenue Recovery</strong>, and <strong class="text-white">Explainable AI Reasoning</strong>.
+    </p>
+  </div>
+
+  <!-- Scenario Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <!-- Scenario 1: Zero Friction Safe User -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-emerald-500/40 transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase font-mono">Scenario A</span>
+          <span class="text-xs text-slate-500">Risk < 40</span>
+        </div>
+        <h3 class="font-bold text-white text-base">Verified User Zero Friction</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Customer location, device fingerprint, and velocity match historical e-KYC baseline. Payment approved with zero friction.
+        </p>
+      </div>
+      <button onclick="runScenario('safe_checkout')" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-play"></i>
+        <span>Run Zero-Friction Test</span>
+      </button>
+    </div>
+
+    <!-- Scenario 2: Location Anomaly Step-Up -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-amber-500/40 transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 text-[10px] font-bold uppercase font-mono">Scenario B</span>
+          <span class="text-xs text-slate-500">Risk 40 - 79</span>
+        </div>
+        <h3 class="font-bold text-white text-base">Geo-Drift Step-Up Challenge</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Device telemetry detected 1,700km from registered Bengaluru baseline. System triggers dynamic step-up OTP challenge.
+        </p>
+      </div>
+      <button onclick="runScenario('geo_drift_stepup')" class="w-full py-2.5 bg-amber-600 hover:bg-amber-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-amber-600/20 transition-all flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-play"></i>
+        <span>Run Step-Up Challenge</span>
+      </button>
+    </div>
+
+    <!-- Scenario 3: Bank Outage Recovery -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-indigo-500/40 transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 text-[10px] font-bold uppercase font-mono">Scenario C</span>
+          <span class="text-xs text-slate-500">Revenue Recovery</span>
+        </div>
+        <h3 class="font-bold text-white text-base">Bank Outage Auto-Recovery</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Card gateway times out (504). Autonomous AI Recovery Agent instantly generates a 1-click fallback UPI payment link.
+        </p>
+      </div>
+      <button onclick="runScenario('bank_outage_recovery')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/20 transition-all flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-play"></i>
+        <span>Run Bank Outage Recovery</span>
+      </button>
+    </div>
+
+    <!-- Scenario 4: Step-Up Dropout Recovery -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-brand-500/40 transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2 py-0.5 rounded bg-brand-500/20 text-brand-400 text-[10px] font-bold uppercase font-mono">Scenario D</span>
+          <span class="text-xs text-slate-500">Cart Dropout</span>
+        </div>
+        <h3 class="font-bold text-white text-base">Friction Dropout Nudge</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Customer hesitates during OTP step-up and drops off. AI Agent reserves cart for 15 mins & dispatches personalized WhatsApp nudge.
+        </p>
+      </div>
+      <button onclick="runScenario('stepup_dropout_recovery')" class="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-brand-600/20 transition-all flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-play"></i>
+        <span>Run Dropout Recovery</span>
+      </button>
+    </div>
+
+    <!-- Scenario 5: Bot / Tor Attack Blocked -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 hover:border-rose-500/40 transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 text-[10px] font-bold uppercase font-mono">Scenario E</span>
+          <span class="text-xs text-slate-500">Risk > 80</span>
+        </div>
+        <h3 class="font-bold text-white text-base">Tor / VPN Bot Attack Blocked</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Spoofed device fingerprint with Tor exit node. Risk score reaches 95/100; transaction blocked to shield merchant from chargebacks.
+        </p>
+      </div>
+      <button onclick="runScenario('fraud_block')" class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-rose-600/20 transition-all flex items-center justify-center space-x-2">
+        <i class="fa-solid fa-play"></i>
+        <span>Run Bot Attack Test</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Live Output Console -->
+  <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-2xl">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+          <i class="fa-solid fa-terminal"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-white text-base">Execution Telemetry Console</h3>
+          <p class="text-xs text-slate-400" id="simCurrentStatus">Select a test scenario above to execute live agent pipeline.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="simConsoleOutput" class="bg-slate-950 rounded-xl p-4 font-mono text-xs text-slate-300 min-h-[160px] overflow-y-auto whitespace-pre-wrap border border-slate-800/80">
+// Awaiting scenario execution...
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/simulator.js"></script>
+{% endblock %}
