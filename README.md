@@ -161,11 +161,8 @@ pip install -r requirements.txt
 3. Start the Server
 bash
 
-
 python main.py
 Open http://localhost:8000 in your browser.
-
-(On Windows, you can also simply double-click run.bat).
 
 📜 License & Acknowledgements
 Built with ❤️ for the Razorpay Buildathon: AI Revenue Recovery.
