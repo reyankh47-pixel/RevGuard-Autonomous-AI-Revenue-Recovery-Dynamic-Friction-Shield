@@ -32,8 +32,105 @@ Every year, digital merchants lose up to **30% of potential revenue** to two maj
 
 ## 💡 The Solution: RevGuard
 ## 💡 The Solution: RevGuard
-**RevGuard** bridges the gap between **zero-friction conversion** and **automated revenue recovery**:
-+---------------------------------------------------------------------------------------+ | PHASE 1: ONE-TIME SECURE ONBOARDING (e-KYC Baseline) | | Captures GPS ping, device canvas fingerprint, and generates SHA-256 biometric hash. | +---------------------------------------------------------------------------------------+ │ ▼ +---------------------------------------------------------------------------------------+ | PHASE 2: REAL-TIME CONTEXT-AWARE DYNAMIC FRICTION | | LLM Risk Agent compares live telemetry against baseline profile. | | • Score < 40: Instant Zero-Friction 1-Click Checkout | | • Score 40 - 79: Dynamic Step-Up Challenge (OTP / Biometric Selfie) | | • Score >= 80: High Risk / Fraud Attack Frozen & Shielded | +---------------------------------------------------------------------------------------+ │ (On Failure or Drop-Off) ▼ +---------------------------------------------------------------------------------------+ | PHASE 3: AUTONOMOUS AI REVENUE RECOVERY ENGINE | | 1. Diagnoses root cause (Bank Outage vs. OTP Hesitation vs. Card Limits) | | 2. Generates 1-Click Razorpay UPI Fallback Payment Links | | 3. Unlocks dynamic 5% recovery concessions & reserves cart inventory for 15 mins | | 4. Dispatches personalized WhatsApp / SMS / Email recovery notifications | | 5. Provides live AI Recovery Copilot Chat Assistant on recovery checkout page | +---------------------------------------------------------------------------------------+
+## 💡 How RevGuard Works
+
+**RevGuard bridges the gap between zero-friction conversion and autonomous revenue recovery** through a three-phase intelligent payment lifecycle.
+
+### 🔐 Phase 1 — One-Time Secure Onboarding
+
+RevGuard first establishes a trusted **e-KYC baseline** for the customer.
+
+* 📍 Captures a **GPS location signal**
+* 💻 Generates a **device/canvas fingerprint**
+* 🔐 Creates a **SHA-256 hashed biometric identifier**
+* 🧠 Builds a baseline profile for future transaction risk evaluation
+
+**Goal:** Establish a trusted identity and device baseline before transactions begin.
+
+⬇️
+
+### ⚡ Phase 2 — Real-Time Context-Aware Dynamic Friction
+
+During checkout, the **LLM-powered Risk Agent** compares live transaction telemetry against the customer's baseline profile and dynamically determines the appropriate security level.
+
+| Risk Score | Decision       | Customer Experience                                    |
+| :--------: | :------------- | :----------------------------------------------------- |
+|  **< 40**  | 🟢 Low Risk    | **Zero-Friction 1-Click Checkout**                     |
+|  **40–79** | 🟡 Medium Risk | **Dynamic Step-Up Challenge** — OTP / Biometric Selfie |
+|  **≥ 80**  | 🔴 High Risk   | **Transaction Frozen & Shielded**                      |
+
+Instead of applying the same authentication process to every customer, RevGuard introduces **friction only when the context demands it.**
+
+⬇️
+
+### 💰 Phase 3 — Autonomous AI Revenue Recovery Engine
+
+If a payment fails or the customer drops off, RevGuard doesn't simply display a **"Payment Failed"** screen.
+
+The **Revenue Recovery Engine** takes autonomous action:
+
+**1. Diagnose the Failure**
+Identifies the probable root cause, such as a bank outage, OTP hesitation, card limit, or other recoverable failure.
+
+**2. Generate a Payment Fallback**
+Creates a **one-click Razorpay UPI fallback payment link** to provide an alternative route to successful payment.
+
+**3. Protect the Conversion Opportunity**
+Offers a dynamic **5% recovery concession** where applicable and reserves cart inventory for **15 minutes**.
+
+**4. Re-engage the Customer**
+Dispatches personalized recovery notifications through **WhatsApp, SMS, or Email**.
+
+**5. Complete the Recovery Journey**
+Provides a live **AI Recovery Copilot** on the recovery checkout page to guide the customer toward successful payment.
+
+---
+
+### 🔄 The RevGuard Decision Loop
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ PHASE 1: SECURE ONBOARDING                                  │
+│                                                             │
+│ GPS Signal → Device Fingerprint → SHA-256 Biometric Hash   │
+│                         ↓                                   │
+│                 Trusted Baseline Profile                    │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│ PHASE 2: DYNAMIC RISK ASSESSMENT                            │
+│                                                             │
+│ Live Telemetry → LLM Risk Agent → Dynamic Risk Score        │
+│                                                             │
+│   < 40        → Zero-Friction Checkout                      │
+│   40–79       → Step-Up Authentication                      │
+│   ≥ 80        → Transaction Frozen & Shielded               │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+                 Payment Failure / Drop-Off
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│ PHASE 3: AUTONOMOUS REVENUE RECOVERY                        │
+│                                                             │
+│ Diagnose → Fallback → Incentivize → Re-engage → Recover    │
+│                                                             │
+│ UPI Link + Recovery Concession + Cart Reservation           │
+│ + WhatsApp/SMS/Email + AI Recovery Copilot                  │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+                 💰 RECOVERED REVENUE
+```
+
+### 🎯 Core Philosophy
+
+> **Don't add friction to every transaction. Don't abandon every failed payment.**
+>
+> **RevGuard dynamically decides when to trust, when to verify, and when to recover.**
+
 
 
 
